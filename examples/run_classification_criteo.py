@@ -6,6 +6,9 @@ from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from deepctr.models import DeepFM
 from deepctr.feature_column import SparseFeat, DenseFeat, get_feature_names
 
+# test LogLoss 0.6319
+# test AUC 0.6237
+
 if __name__ == "__main__":
     data = pd.read_csv('./criteo_sample.txt')
 
@@ -32,6 +35,7 @@ if __name__ == "__main__":
     dnn_feature_columns = fixlen_feature_columns
     linear_feature_columns = fixlen_feature_columns
 
+    # generate feature columns
     feature_names = get_feature_names(linear_feature_columns + dnn_feature_columns)
 
     # 3.generate input data for model

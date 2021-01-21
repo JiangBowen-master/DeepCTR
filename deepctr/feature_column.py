@@ -17,8 +17,10 @@ class SparseFeat(namedtuple('SparseFeat',
                             ['name', 'vocabulary_size', 'embedding_dim', 'use_hash', 'dtype', 'embeddings_initializer',
                              'embedding_name',
                              'group_name', 'trainable'])):
+    # 通过避免定义动态的数据结构__dict__来实现对memory的节省, 如果指定了slots, 那么access attributes更快
     __slots__ = ()
 
+    # cls代表的是类的本身，相对应的self则是类的一个实例对象
     def __new__(cls, name, vocabulary_size, embedding_dim=4, use_hash=False, dtype="int32", embeddings_initializer=None,
                 embedding_name=None,
                 group_name=DEFAULT_GROUP_NAME, trainable=True):
